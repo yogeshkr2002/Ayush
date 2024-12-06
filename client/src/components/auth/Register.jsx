@@ -4,6 +4,7 @@ import * as Yup from "yup";
 import { Link, useNavigate } from "react-router-dom";
 import "./register.css"; // Import the new CSS file
 import { toast } from "react-hot-toast";
+import { register } from "../services/api";
 
 const validationSchema = Yup.object({
   username: Yup.string()
@@ -30,30 +31,11 @@ const Register = () => {
     validationSchema,
     onSubmit: async (values) => {
       try {
-        const response = await fetch(
-          "https://ayush-cyan.vercel.app/api/auth/register",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-              "Access-Control-Allow-Origin":
-                "https://ayush-assignment.vercel.app",
-            },
-            credentials: "include",
-            body: JSON.stringify(values),
-          }
-        );
-
-        const data = await response.json();
-
-        if (response.ok) {
-          toast.success("Registration successful!");
-          navigate("/login");
-        } else {
-          setError(data.message || "Registration failed");
-        }
+        const data = await register(values);
+        toast.success("Registration successful!");
+        navigate("/login");
       } catch (err) {
-        setError("Registration failed. Please try again.");
+        setError(err.message || "Registration failed. Please try again.");
         console.error("Registration error:", err);
       }
     },

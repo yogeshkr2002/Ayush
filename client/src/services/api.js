@@ -26,10 +26,14 @@ export const login = async (credentials) => {
 
 export const register = async (userData) => {
   try {
-    const response = await api.post("/auth/register", userData, {
+    const response = await axios({
+      method: "POST",
+      url: `${API_URL}/auth/register`,
+      data: userData,
       headers: {
-        "Access-Control-Allow-Origin": "https://ayush-assignment.vercel.app",
+        "Content-Type": "application/json",
       },
+      withCredentials: true,
     });
     return response.data;
   } catch (error) {

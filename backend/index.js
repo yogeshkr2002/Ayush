@@ -13,13 +13,23 @@ connectDB();
 // Middleware
 app.use(
   cors({
-    origin: ["https://ayush-assignment.vercel.app", "http://localhost:5173"],
+    origin: true,
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization"],
+    allowedHeaders: [
+      "Content-Type",
+      "Authorization",
+      "X-Requested-With",
+      "Accept",
+    ],
     credentials: true,
+    preflightContinue: false,
+    optionsSuccessStatus: 204,
   })
 );
 app.use(express.json());
+
+// Add OPTIONS handling for preflight requests
+app.options("*", cors());
 
 // Create uploads directory if it doesn't exist
 const uploadsDir = path.join(__dirname, "uploads");

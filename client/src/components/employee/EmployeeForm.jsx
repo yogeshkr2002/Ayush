@@ -16,7 +16,9 @@ import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 
 const EmployeeForm = ({ initialValues, onSubmit, mode }) => {
   const [imagePreview, setImagePreview] = useState(
-    initialValues?.image ? `http://localhost:5000/${initialValues.image}` : null
+    initialValues?.image
+      ? `https://ayush-cyan.vercel.app/${initialValues.image}`
+      : null
   );
 
   const formik = useFormik({

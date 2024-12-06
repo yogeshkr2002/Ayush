@@ -162,7 +162,7 @@ const EmployeeList = () => {
                       }}
                     >
                       <img
-                        src={`http://localhost:5000/${employee.image}`}
+                        src={`https://ayush-cyan.vercel.app/${employee.image}`}
                         alt={employee.name}
                         style={{
                           width: "100%",

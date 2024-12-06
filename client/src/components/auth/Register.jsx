@@ -30,7 +30,7 @@ const Register = () => {
     onSubmit: async (values) => {
       try {
         const response = await fetch(
-          "http://localhost:5000/api/auth/register",
+          "https://ayush-cyan.vercel.app/api/auth/register",
           {
             method: "POST",
             headers: {

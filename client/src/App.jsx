@@ -8,6 +8,7 @@ import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
 import Dashboard from "./components/dashboard/Dashboard";
 import { isAuthenticated, clearUserData } from "./services/authService";
+import ToastProvider from "./components/common/ToastProvider";
 
 const theme = createTheme({
   palette: {
@@ -50,7 +51,7 @@ const App = () => {
           <Route path="/" element={<Navigate to="/dashboard" replace />} />
         </Routes>
       </BrowserRouter>
-      <ToastContainer position="top-right" autoClose={3000} />
+      <ToastProvider />
     </ThemeProvider>
   );
 };

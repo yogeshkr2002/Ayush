@@ -3,6 +3,7 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { Link, useNavigate } from "react-router-dom";
 import "./register.css"; // Import the new CSS file
+import { toast } from "react-hot-toast";
 
 const validationSchema = Yup.object({
   username: Yup.string()
@@ -35,7 +36,10 @@ const Register = () => {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
+              "Access-Control-Allow-Origin":
+                "https://ayush-assignment.vercel.app",
             },
+            credentials: "include",
             body: JSON.stringify(values),
           }
         );
@@ -43,12 +47,14 @@ const Register = () => {
         const data = await response.json();
 
         if (response.ok) {
+          toast.success("Registration successful!");
           navigate("/login");
         } else {
-          setError(data.message);
+          setError(data.message || "Registration failed");
         }
       } catch (err) {
         setError("Registration failed. Please try again.");
+        console.error("Registration error:", err);
       }
     },
   });

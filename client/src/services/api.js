@@ -4,6 +4,10 @@ const API_URL = "https://ayush-cyan.vercel.app/api";
 
 const api = axios.create({
   baseURL: API_URL,
+  headers: {
+    "Content-Type": "application/json",
+  },
+  withCredentials: true,
 });
 
 // Add token to requests
@@ -21,8 +25,16 @@ export const login = async (credentials) => {
 };
 
 export const register = async (userData) => {
-  const response = await api.post("/auth/register", userData);
-  return response.data;
+  try {
+    const response = await api.post("/auth/register", userData, {
+      headers: {
+        "Access-Control-Allow-Origin": "https://ayush-assignment.vercel.app",
+      },
+    });
+    return response.data;
+  } catch (error) {
+    throw error.response?.data || error;
+  }
 };
 
 export const getEmployees = async () => {

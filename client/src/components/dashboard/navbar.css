@@ -1,0 +1,92 @@
+/* Navbar Container */
+.navbar {
+  width: 100%;
+  background: #3f51b5; /* Primary color */
+  color: #ffffff;
+  padding: 10px 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+/* Navbar Content Wrapper */
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Brand Section */
+.navbar-brand {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+/* Links Section */
+.navbar-links {
+  display: flex;
+  gap: 20px;
+}
+
+/* Individual Link Styling */
+.navbar-link {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.navbar-link:hover {
+  color: #ffeb3b; /* Highlight color on hover */
+}
+
+/* User Section */
+.navbar-user {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+/* Username Styling */
+.navbar-username {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+/* Logout Button */
+.navbar-logout {
+  background: #ff5722; /* Logout button color */
+  color: #ffffff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.navbar-logout:hover {
+  background: #e64a19; /* Darker shade on hover */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .navbar-container {
+    flex-wrap: wrap;
+    gap: 10px;
+    text-align: center;
+  }
+
+  .navbar-links {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+
+  .navbar-user {
+    justify-content: center;
+  }
+}

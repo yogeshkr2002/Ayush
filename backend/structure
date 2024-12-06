@@ -1,0 +1,15 @@
+backend/
+├── config/
+│   └── db.js
+├── controllers/
+│   ├── authController.js
+│   └── employeeController.js
+├── middleware/
+│   └── auth.js
+├── models/
+│   ├── User.js
+│   └── Employee.js
+├── routes/
+│   ├── auth.js
+│   └── employee.js
+└── server.js 
